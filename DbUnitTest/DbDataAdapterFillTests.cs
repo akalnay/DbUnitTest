@@ -44,7 +44,7 @@ namespace DbUnitTest
             public static IEnumerable<TestCaseData> TestDataTablesExceptions()
             {
                 yield return new TestCaseData(0, 0, null);
-                yield return new TestCaseData(0, 0, new DataTable[] { });
+                yield return new TestCaseData(0, 0, Array.Empty<DataTable>());
             }
         }
 
@@ -89,13 +89,13 @@ namespace DbUnitTest
             int result;
             const string selectText = "SELECT CategoryName FROM Categories";
             using (DbCommand dbCommand = DbConnection.CreateCommand())
-            using (DbDataAdapter dbDataAdapter = DbProviderFactory.CreateDataAdapter())
-            using (DataTable dataTable = new DataTable())
-            {
-                dbCommand.CommandText = selectText;
-                dbDataAdapter.SelectCommand = dbCommand;
-                result = dbDataAdapterFill(startRecord, maxRecords, dbDataAdapter, dataTable);
-            }
+                using (DbDataAdapter dbDataAdapter = DbProviderFactory.CreateDataAdapter())
+                    using (DataTable dataTable = new DataTable())
+                    {
+                        dbCommand.CommandText = selectText;
+                        dbDataAdapter.SelectCommand = dbCommand;
+                        result = dbDataAdapterFill(startRecord, maxRecords, dbDataAdapter, dataTable);
+                    }
             return result;
         }
 
@@ -103,12 +103,12 @@ namespace DbUnitTest
         {
             const string selectText = "SELECT CategoryName FROM Categories";
             using (DbCommand dbCommand = DbConnection.CreateCommand())
-            using (DbDataAdapter dbDataAdapter = DbProviderFactory.CreateDataAdapter())
-            {
-                dbCommand.CommandText = selectText;
-                dbDataAdapter.SelectCommand = dbCommand;
-                dbDataAdapterFill(startRecord, maxRecords, dbDataAdapter, dataTables);
-            }
+                using (DbDataAdapter dbDataAdapter = DbProviderFactory.CreateDataAdapter())
+                {
+                    dbCommand.CommandText = selectText;
+                    dbDataAdapter.SelectCommand = dbCommand;
+                    dbDataAdapterFill(startRecord, maxRecords, dbDataAdapter, dataTables);
+                }
         }
 
         #endregion Tests

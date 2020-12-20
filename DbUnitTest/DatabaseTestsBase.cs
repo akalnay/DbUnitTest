@@ -17,7 +17,7 @@ namespace DbUnitTest
         public void Init()
         {
             DbProviderFactory = GetDbProviderFactory();
-            DbConnection = DbProviderFactory.CreateConnection();
+            DbConnection      = DbProviderFactory.CreateConnection();
             OpenConnection(DbConnection);
             using (DbCommand dbCommand = DbConnection.CreateCommand())
             {
