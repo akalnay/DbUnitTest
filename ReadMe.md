@@ -2,7 +2,7 @@
 
 This project demonstrates a simple framework for writing unit tests for database code.  I am using the term "framework" in a very loose way here as the framework in question consists of a single abstract class (`DatabaseTestsBase`) that test classes should inherit from if the intent is to create unit tests for code that requires a database.
 
-The abstract methods in `DatabaseTestsBase` are self-explanatory with their intent easily infered from their names:  `OpenConnection()`, `CreateDatabaseTables()`, and `AddDataToDatabaseTables()`.
+The abstract methods in `DatabaseTestsBase` are self-explanatory with their intent easily inferred from their names:  `OpenConnection()`, `CreateDatabaseTables()`, and `AddDataToDatabaseTables()`.
 
 `DatabaseTestsBase` is [DBMS](https://en.wikipedia.org/wiki/Database#Database_management_system) agnostic, it doesn't care what the underlying DBMS is.  This is accomplished via the `GetDbProviderFactory()` method which descendant classes must also override.  In practical terms however, the fact that good unit tests must be fast, repeatable, and isolated, implies that the DBMS should be an [in-memory database](https://en.wikipedia.org/wiki/In-memory_database).  This allows for the database to be quickly created when needed and to be in a consistent state.  The unit tests in this project rely on a [SQLite](https://sqlite.org/index.html) database which has the option to run entirely in memory.
 
