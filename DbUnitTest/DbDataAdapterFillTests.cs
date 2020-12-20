@@ -92,9 +92,9 @@ namespace DbUnitTest
                 using (DbDataAdapter dbDataAdapter = DbProviderFactory.CreateDataAdapter())
                     using (DataTable dataTable = new DataTable())
                     {
-                        dbCommand.CommandText = selectText;
+                        dbCommand.CommandText       = selectText;
                         dbDataAdapter.SelectCommand = dbCommand;
-                        result = dbDataAdapterFill(startRecord, maxRecords, dbDataAdapter, dataTable);
+                        result                      = dbDataAdapterFill(startRecord, maxRecords, dbDataAdapter, dataTable);
                     }
             return result;
         }
@@ -105,7 +105,7 @@ namespace DbUnitTest
             using (DbCommand dbCommand = DbConnection.CreateCommand())
                 using (DbDataAdapter dbDataAdapter = DbProviderFactory.CreateDataAdapter())
                 {
-                    dbCommand.CommandText = selectText;
+                    dbCommand.CommandText       = selectText;
                     dbDataAdapter.SelectCommand = dbCommand;
                     dbDataAdapterFill(startRecord, maxRecords, dbDataAdapter, dataTables);
                 }
