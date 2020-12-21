@@ -79,7 +79,7 @@ namespace DbUnitTest
 
         // Verify that when the dataTables argument is null or an empty array, then an ArgumentNullException is thrown
         [TestCaseSource(typeof(TestCases), nameof(TestCases.TestDataTablesExceptions))]
-        public void WhenTheDataTablesArgumentIsNullOrAnEmptyArray_ThenAnArgumentNullExceptionIsThrown2(int startRecord, int maxRecords, DataTable[] dataTables)
+        public void WhenTheDataTablesArgumentIsNullOrAnEmptyArray_ThenAnArgumentNullExceptionIsThrown(int startRecord, int maxRecords, DataTable[] dataTables)
         {
             Assert.Throws<ArgumentNullException>(() => DbDataAdapterFill(startRecord, maxRecords, dataTables,
                     (startRec, maxRecs, dbDataAdapter, dtTables) => dbDataAdapter.Fill(startRec, maxRecs, dtTables)));
