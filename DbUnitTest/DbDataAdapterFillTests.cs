@@ -72,7 +72,8 @@ namespace DbUnitTest
             DbDataAdapterFill(startRecord, maxRecords, (startRec, maxRecs, dbDataAdapter, dataTable) =>
             {
                 Assert.Throws<ArgumentException>(() => dbDataAdapter.Fill(startRec, maxRecs, dataTable));
-                return int.MinValue;
+                return int.MinValue;    // The delegate argument in DbDataAdapterFill() is a Func therefore
+                                        // a return value is needed here.
             });
         }
 
